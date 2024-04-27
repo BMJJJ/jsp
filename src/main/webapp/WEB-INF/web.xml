@@ -12,13 +12,13 @@
   
   <!-- 
   <servlet>
-  	<servlet-name>Test8</servlet-name>
-  	<servlet-class>study.j0424.Test8</servlet-class>
+    <servlet-name>Test8</servlet-name>
+    <servlet-class>study.j0424.Test8</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Test8</servlet-name>
-  	<url-pattern>/T8</url-pattern>
+    <servlet-name>Test8</servlet-name>
+    <url-pattern>/T8</url-pattern>
   </servlet-mapping>
-   -->
-   
+  -->
+  
 </web-app>
