@@ -2,7 +2,6 @@ package study.j0425;
 
 import java.io.IOException;
 
-import javax.security.auth.message.callback.SecretKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +33,8 @@ public class T11Ok extends HttpServlet {
 		
 		String viewPage = "/study/0425/t11_main.jsp?msgFlag=ok&mid="+mid;
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);//여기다가 가고 싶은 주소 적기
-		dispatcher.forward(request, response);//무조건 앞으로 간다.
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
+		
 	}
 }

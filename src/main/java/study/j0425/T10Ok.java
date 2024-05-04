@@ -25,11 +25,9 @@ public class T10Ok extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/study/0425/t10_Login.jsp?msgFlag=no");
 			return;
 		}
-		System.out.println("T10Ok.java");
+		
 		// 정상회원들 처리부분...
 		System.out.println("정상로그인 처리됨....");
-//		response.sendRedirect(request.getContextPath()+"/study/0425/t10_main.jsp?msgFlag=ok&mid="+mid);
-//		response.sendRedirect(request.getContextPath()+"/study/0425/t10_main.jsp");
-		response.sendRedirect(request.getContextPath()+"/study/0425/t10_mmm.jsp?mid="+mid+"&pwd="+pwd);
+		response.sendRedirect(request.getContextPath()+"/study/0425/t10_main.jsp?msgFlag=ok&mid="+mid);
 	}
 }

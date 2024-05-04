@@ -63,5 +63,4 @@ public class T12VO {
 		return "T12VO [name=" + name + ", age=" + age + ", gender=" + gender + ", hobby=" + hobby + ", job=" + job
 				+ ", mountain=" + mountain + ", content=" + content + ", fileName=" + fileName + "]";
 	}
-	
 }

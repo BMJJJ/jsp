@@ -57,17 +57,18 @@ public class T12Ok extends HttpServlet {
 		vo.setGender(gender);
 		vo.setHobby(hobby);
 		vo.setJob(job);
+		vo.setMountain(mountain);
 		vo.setContent(content);
 		vo.setFileName(fileName);
 		
-//		response.sendRedirect(request.getContextPath()+"/study/0425/t12Main.jsp?name="+name+"&age="+age+"&gender="+gender+"&hobby="+hobby+"&job="+job+"&mountain="+mountain);
-//		response.sendRedirect(request.getContextPath()+"/study/0425/t12Main.jsp?vo="+vo);
+		//response.sendRedirect(request.getContextPath()+"/study/0425/t12Main.jsp?name="+name+"&age="+age+"&gender="+gender+"&hobby="+hobby+"&job="+job+"&mountain="+mountain);
+		//response.sendRedirect(request.getContextPath()+"/study/0425/t12Main.jsp?vo="+vo);
 		
 		request.setAttribute("vo", vo);
-		System.out.println("t12Ok.java : ");
-//		String viewPage = "/study/0425/t12Main2.jsp";
-		String viewPage = "/0425/T12Ok2";
+		
+		String viewPage = "/study/0425/t12Main.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		
 	}
 }

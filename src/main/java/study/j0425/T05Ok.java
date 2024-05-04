@@ -29,7 +29,7 @@ public class T05Ok extends HttpServlet {
 		if(loginOk.equals("OK")) {
 			out.println("<script>");
 			out.println("alert('"+mid+"님 로그인 되었습니다.');");
-			out.println("location.href='"+request.getContextPath()+"/study/0425/t05Main.jsp?mid="+mid+"';");	// QueryString(Get방식)
+			out.println("location.href='"+request.getContextPath()+"/study/0425/t05Main.jsp?mid="+mid+"';");
 			out.println("</script>");
 		}
 		else {
