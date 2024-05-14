@@ -14,43 +14,37 @@
   <script>
     'use strict';
     
-    let nickCheckSw = 1;
-    $(()=>{
-        if('${message}'!='') {
-            alert("${message}\n변경된 내용을 확인 부탁드립니다.");
-        }
-    });
+    let nickCheckSw = 0;
+    
     function fCheck() {
-        // 유효성 검사.....
-        // 아이디,닉네임,성명,이메일,홈페이지,전화번호,비밀번호 등등....
-        
-        // 정규식을 이용한 유효성검사처리.....
-      let regMid = /^[a-zA-Z0-9_]{4,20}$/;    // 아이디는 4~20의 영문 대/소문자와 숫자와 밑줄 가능
-      let regNickName = /^[가-힣]+$/;                    // 닉네임은 한글만 가능
-      let regName = /^[가-힣a-zA-Z]+$/;                // 이름은 한글/영문 가능
-        
-        
-        // 검사를 끝내고 필요한 내역들을 변수에 담아 회원가입처리한다.
-        let mid = myform.mid.value.trim();
-        let nickName = myform.nickName.value;
-        let name = myform.name.value;
-        
-        let email1 = myform.email1.value.trim();
-        let email2 = myform.email2.value;
-        let email = email1 + "@" + email2;
-        
-        let tel1 = myform.tel1.value;
-        let tel2 = myform.tel2.value.trim();
-        let tel3 = myform.tel3.value.trim();
-        let tel = tel1 + "-" + tel2 + "-" + tel3;
-        
-        let postcode = myform.postcode.value + " ";
-        let roadAddress = myform.roadAddress.value + " ";
-        let detailAddress = myform.detailAddress.value + " ";
-        let extraAddress = myform.extraAddress.value + " ";
-        let address = postcode + "/" + roadAddress + "/" + detailAddress + "/" + extraAddress;
-        
-        if(!regNickName.test(nickName)) {
+    	// 유효성 검사.....
+    	// 아이디,닉네임,성명,이메일,홈페이지,전화번호,비밀번호 등등....
+    	
+    	// 정규식을 이용한 유효성검사처리.....
+      let regNickName = /^[가-힣0-9_]+$/;			// 닉네임은 한글,숫자,밑줄만 가능
+      let regName = /^[가-힣a-zA-Z]+$/;				// 이름은 한글/영문 가능
+    	
+    	
+    	// 검사를 끝내고 필요한 내역들을 변수에 담아 회원가입처리한다.
+    	let nickName = myform.nickName.value;
+    	let name = myform.name.value;
+    	
+    	let email1 = myform.email1.value.trim();
+    	let email2 = myform.email2.value;
+    	let email = email1 + "@" + email2;
+    	
+    	let tel1 = myform.tel1.value;
+    	let tel2 = myform.tel2.value.trim();
+    	let tel3 = myform.tel3.value.trim();
+    	let tel = tel1 + "-" + tel2 + "-" + tel3;
+    	
+    	let postcode = myform.postcode.value + " ";
+    	let roadAddress = myform.roadAddress.value + " ";
+    	let detailAddress = myform.detailAddress.value + " ";
+    	let extraAddress = myform.extraAddress.value + " ";
+    	let address = postcode + "/" + roadAddress + "/" + detailAddress + "/" + extraAddress;
+    	
+    	if(!regNickName.test(nickName)) {
         alert("닉네임은 한글만 사용가능합니다.");
         myform.nickName.focus();
         return false;
@@ -60,67 +54,65 @@
         myform.name.focus();
         return false;
       }
-            // 이메일 주소형식체크
-            
-            // 홈페이지 주소형식체크
-            
-            // 전화번호 형식 체크
-            
-        
-        if(nickCheckSw == 0) {
-            alert("닉네임 중복체크버튼을 눌러주세요");
-            document.getElementById("nickNameBtn").focus();
-        }
-        else {
-            myform.email.value = email;
-            myform.tel.value = tel;
-            myform.address.value = address;
-            
-            myform.submit();
-        }
+			// 이메일 주소형식체크
+			
+			// 홈페이지 주소형식체크
+			
+			// 전화번호 형식 체크
+			
+    	
+    	if(nickCheckSw == 0) {
+    		alert("닉네임 중복체크버튼을 눌러주세요");
+    		document.getElementById("nickNameBtn").focus();
+    	}
+    	else {
+    		myform.email.value = email;
+    		myform.tel.value = tel;
+    		myform.address.value = address;
+    		
+    		myform.submit();
+    	}
     }
     
     
     // 닉네임 중복체크
     function nickCheck() {
-        let nickName = myform.nickName.value;
-        
-        if(nickName.trim() == "") {
-            alert("닉네임을 입력하세요!");
-            myform.nickName.focus();
-        }
-        else {
-            nickCheckSw = 1;
-            
-            $.ajax({
-                url  : "${ctp}/MemberNickCheck.mem",
-                type : "get",
-                data : {nickName : nickName},
-                success:function(res) {
-                    if(res != '0') {
-                        if('${sNickName}'==nickName) {
-                            alert("이전 닉네임(${sNickName}과 똑같은 닉네임입니다.)")
-                        } else {
-                            alert("이미 사용중인 닉네임 입니다. 다시 입력하세요.");
-                        }
-                        myform.nickName.focus();
-                    }
-                    else alert("사용 가능한 닉네임 입니다.");
-                },
-                error : function() {
-                    alert("전송 오류!");
-                }
-            });
-        }
+    	let nickName = myform.nickName.value;
+    	
+    	if(nickName.trim() == "") {
+    		alert("닉네임을 입력하세요!");
+    		myform.nickName.focus();
+    	}
+    	else if(nickName == '${sNickName}') {
+    		alert("현재 닉네임을 그대로 사용합니다.");
+    		nickCheckSw = 1;
+    		return false;
+    	}
+    	else {
+    		nickCheckSw = 1;
+    		
+    		$.ajax({
+    			url  : "${ctp}/MemberNickCheck.mem",
+    			type : "get",
+    			data : {nickName : nickName},
+    			success:function(res) {
+    				if(res != '0') {
+    					alert("이미 사용중인 닉네임 입니다. 다시 입력하세요.");
+    					myform.nickName.focus();
+    				}
+    				else alert("사용 가능한 닉네임 입니다.");
+    			},
+    			error : function() {
+    				alert("전송 오류!");
+    			}
+    		});
+    	}
     }
     
-    $(function() {
-        $("#nickName").on("blur", () => {
-            if('${sNickName}'!=myform.nickName.value) {
-                nickCheckSw = 0;
-            }
-        });
-        
+    $(function(){
+    	$("#nickName").on("blur", () => {
+    		nickCheckSw = 0;
+    	});
     });
   </script>
 </head>
@@ -129,7 +121,7 @@
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <form name="myform" method="post" action="${ctp}/MemberJoinOk.mem" class="was-validated">
+  <form name="myform" method="post" action="${ctp}/MemberUpdateOk.mem" class="was-validated">
     <h2>회 원 가 입</h2>
     <br/>
     <div>아이디 : ${sMid}</div>
@@ -268,6 +260,8 @@
     <input type="hidden" name="email" />
     <input type="hidden" name="tel" />
     <input type="hidden" name="address" />
+    <input type="hidden" name="mid" value="${sMid}" />
+    <input type="hidden" name="photo" value="${vo.photo}" />
   </form>
 </div>
 <p><br/></p>

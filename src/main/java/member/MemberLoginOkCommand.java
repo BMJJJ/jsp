@@ -20,7 +20,9 @@ public class MemberLoginOkCommand implements MemberInterface {
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		
 		MemberDAO dao = new MemberDAO();
+		
 		MemberVO vo = dao.getMemberIdCheck(mid);
+		
 		// 아래로 회원 인증처리
 		if(vo.getPwd() == null || vo.getUserDel().equals("OK")) {
 			request.setAttribute("message", "입력하신 회원정보가 없습니다.\\n확인하고 다시 로그인하세요.");
@@ -96,6 +98,7 @@ public class MemberLoginOkCommand implements MemberInterface {
 		session.setAttribute("sNickName", vo.getNickName());
 		session.setAttribute("sLevel", vo.getLevel());
 		session.setAttribute("strLevel", strLevel);
+		
 		request.setAttribute("message", mid+"님 로그인 되셨습니다.");
 		request.setAttribute("url", request.getContextPath()+"/MemberMain.mem");
 	}
