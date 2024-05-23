@@ -26,7 +26,6 @@ public class MemberMainCommand implements MemberInterface {
 		ArrayList<GuestVO> gVos = gDao.getMemberGuestSearch(mid, mVo.getName(), mVo.getNickName());
 		
 		request.setAttribute("mVo", mVo);
-		request.setAttribute("guestCnt", gVos.size());
 	}
 
 }
