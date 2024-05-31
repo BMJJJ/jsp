@@ -7,7 +7,7 @@
 %>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <%-- <a class="navbar-brand" href="<%=request.getContextPath()%>/">Home</a> --%>
-  <!-- <a class="navbar-brand" href="http://192.168.50.69:9090/javaclass">Home</a> -->
+  <!-- <a class="navbar-brand" href="http://192.168.50.20:9090/javaclass">Home</a> -->
   <a class="navbar-brand" href="http://192.168.50.69:9090/javaclass/Main">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -64,7 +64,22 @@
 				      <a class="dropdown-item" href="${ctp}/study/database/login.jsp">로그인연습</a>
 				      <a class="dropdown-item" href="Modal1.st">모달연습1</a>
 				      <a class="dropdown-item" href="Modal2.st">모달연습2</a>
-				      <a class="dropdown-item" href="FileUpload.st">파일 업로드 연습</a>
+				      <a class="dropdown-item" href="FileUpload.st">파일업로드</a>
+				    </div>
+				  </div>
+	      </li>
+	      <li class="nav-item mr-2">
+				  <div class="dropdown">
+				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Study3</button>
+				    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="Calendar1.st">달력연습1</a>
+				      <a class="dropdown-item" href="Calendar2.st">달력연습2</a>
+				      <a class="dropdown-item" href="ScrollStudy.st">스크롤 연습</a>
+				      <a class="dropdown-item" href="ScrollBasic.st">무한 스크롤</a>
+				      <a class="dropdown-item" href="Transaction.st">트랜잭션연습</a>
+				      <%-- <a class="dropdown-item" href="${ctp}/translator">웹 번역</a> --%>
+				      <a class="dropdown-item" href="Translator.st">웹 번역</a>
+				      <a class="dropdown-item" href="Error.st">에러페이지</a>
 				    </div>
 				  </div>
 	      </li>
@@ -76,8 +91,8 @@
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="MemberMain.mem">회원메인방</a>
 				      <c:if test="${level <= 4 && (level > 1 || level == 0)}">
-					      <a class="dropdown-item" href="#">일정관리</a>
-					      <a class="dropdown-item" href="#">메세지관리</a>
+					      <a class="dropdown-item" href="Schedule.sc">일정관리</a>
+					      <a class="dropdown-item" href="WebMessage.wm">메세지관리</a>
 				      	<a class="dropdown-item" href="MemberList.mem">회원리스트</a>
 				      </c:if>
 				      <a class="dropdown-item" href="MemberPwdCheck.mem">회원정보수정</a>

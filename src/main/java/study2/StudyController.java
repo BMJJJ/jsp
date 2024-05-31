@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import study2.ajax.AjaxIdCheck0Command;
 import study2.ajax.AjaxIdCheck1Command;
+import study2.calendar.Calendar1Command;
+import study2.calendar.Calendar2Command;
 import study2.hoewon.HoewonDeleteCommand;
 import study2.hoewon.HoewonInputCommand;
 import study2.hoewon.HoewonMainCommand;
@@ -26,6 +28,10 @@ import study2.pdstest.FileUpload2OkCommand;
 import study2.pdstest.FileUpload3OkCommand;
 import study2.pdstest.FileUpload4OkCommand;
 import study2.pdstest.JavaFileDownloadCommand;
+import study2.scrollPage.ScrollPageCommand;
+import study2.transaction.TransactionBankBookCommand;
+import study2.transaction.TransactionTest1Command;
+import study2.transaction.TransactionTest2Command;
 
 @SuppressWarnings("serial")
 @WebServlet("*.st")
@@ -161,6 +167,60 @@ public class StudyController extends HttpServlet {
 			command = new FileDeleteCheckCommand();
 			command.execute(request, response);
 			return;
+		}
+		else if(com.equals("Calendar1")) {
+			command = new Calendar1Command();
+			command.execute(request, response);
+			viewPage += "/calendar/calendar1.jsp";
+		}
+		else if(com.equals("Calendar2")) {
+			command = new Calendar2Command();
+			command.execute(request, response);
+			viewPage += "/calendar/calendar2.jsp";
+		}
+		else if(com.equals("ScrollStudy")) {
+			viewPage += "/scrollPage/scrollStudy.jsp";
+		}
+		else if(com.equals("ScrollBasic")) {
+			command = new ScrollPageCommand();
+			command.execute(request, response);
+			viewPage += "/scrollPage/scrollBasic.jsp";
+		}
+		else if(com.equals("ScrollPage")) {
+			command = new ScrollPageCommand();
+			command.execute(request, response);
+			viewPage += "/scrollPage/scrollPage.jsp";
+		}
+		else if(com.equals("Transaction")) {
+			viewPage += "/transaction/transaction.jsp";
+		}
+		else if(com.equals("TransactionBankBook")) {
+			command = new TransactionBankBookCommand();
+			command.execute(request, response);
+			viewPage += "/transaction/transactionBankBook.jsp";
+		}
+		else if(com.equals("TransactionTest1")) {
+			command = new TransactionTest1Command();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("TransactionTest2")) {
+			command = new TransactionTest2Command();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("Translator")) {
+			viewPage += "/translator/translator.jsp";
+		}
+		else if(com.equals("Error")) {
+			viewPage += "/error/error.jsp";
+		}
+		else if(com.equals("ErrorJSP")) {
+			viewPage += "/error/errorJSP.jsp";
+		}
+		else if(com.equals("Error500")) {
+			
+			viewPage += "/error/errorJSP.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
